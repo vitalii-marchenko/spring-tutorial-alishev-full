@@ -3,10 +3,7 @@ package ua.vitalii.marchenko.app.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -20,6 +17,10 @@ public class Person {
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email should be valid")
     private String email;
+
+    // Country, City, Zip (6 digits)
+    @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Your address should match next pattern Country, City, Zip (6 digits)")
+    private String address;
 
     public Person() {
 
